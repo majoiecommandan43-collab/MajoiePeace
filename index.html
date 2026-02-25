@@ -1,28 +1,60 @@
-<section id="contact-marceline">
-    <h2>Contactez Marceline</h2>
-    <form action="https://formspree.io/f/mzdayqvl" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <input type="submit" value="Send">
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to our Website</h1>
+    </header>
 
-    <h2>Devis Marceline</h2>
-    <form action="https://formspree.io/f/meelvwzy" method="POST">
-        <label for="name-devis">Name:</label>
-        <input type="text" id="name-devis" name="name" required>
-        <label for="email-devis">Email:</label>
-        <input type="email" id="email-devis" name="email" required>
-        <input type="submit" value="Get Quote">
-    </form>
+    <main>
+        <section>
+            <h2>About Us</h2>
+            <p>This is the about section.</p>
+        </section>
+        <section>
+            <h2>Our Services</h2>
+            <p>Details about services.</p>
+        </section>
+    </main>
 
-    <h2>Inscription Marceline</h2>
-    <form action="https://formspree.io/f/xojnyzna" method="POST">
-        <label for="name-inscription">Name:</label>
-        <input type="text" id="name-inscription" name="name" required>
-        <label for="email-inscription">Email:</label>
-        <input type="email" id="email-inscription" name="email" required>
-        <input type="submit" value="Register">
-    </form>
-</section>
+    <section id="contact">
+        <h2>Contactez Marceline</h2>
+        <form action="https://formspree.io/f/your_email" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <textarea name="message" id="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <section id="quote">
+        <h2>Devis Marceline</h2>
+        <form action="https://formspree.io/f/your_email" method="POST">
+            <label for="services">Services Required:</label>
+            <input type="text" id="services" name="services" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Request Quote</button>
+        </form>
+    </section>
+    <section id="registration">
+        <h2>Inscription Marceline</h2>
+        <form action="https://formspree.io/f/your_email" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Your Company</p>
+    </footer>
+</body>
+</html>
