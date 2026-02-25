@@ -1,43 +1,1836 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAYC Shop</title>
+    <title>KAYC Shop - Votre Boutique en Ligne Préférée</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --success: #27ae60;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header et Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .top-links a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 2rem;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 30px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 14px 25px;
+            border: 2px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+            background-color: var(--light);
+        }
+
+        .search-bar input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            background-color: white;
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-actions a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1.3rem;
+            position: relative;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+        }
+
+        .user-actions a:hover {
+            color: var(--accent);
+            background-color: rgba(52, 152, 219, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--secondary);
+            color: white;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Navigation principale */
+        nav {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            padding: 18px 20px;
+            display: block;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--accent);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            z-index: 1000;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--dark);
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light);
+            color: var(--accent);
+        }
+
+        /* Quick Access Bar */
+        .quick-access {
+            background-color: var(--light);
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            background-color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .quick-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            color: var(--accent);
+        }
+
+        .quick-link i {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Catégories */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .category-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-img img {
+            transform: scale(1.1);
+        }
+
+        .category-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+
+        .category-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .category-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Produits */
+        .products {
+            margin-bottom: 60px;
+        }
+
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--accent);
+            background-color: transparent;
+            color: var(--accent);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .product-actions button {
+            background-color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .product-actions button:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1rem;
+            margin-left: 8px;
+        }
+
+        .add-to-cart {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--light);
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        /* Bannière */
+        .banner {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 70px 40px;
+            border-radius: var(--radius);
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            opacity: 0.1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 999;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+        }
+
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #bbb;
+        }
+
+        .contact-details i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .newsletter p {
+            margin-bottom: 20px;
+            color: #bbb;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            padding: 14px 20px;
+            border: none;
+            border-radius: var(--radius);
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--secondary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright-links a {
+            color: #bbb;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: var(--transition);
+        }
+
+        .copyright-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--light);
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .breadcrumb-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gray);
+        }
+
+        .breadcrumb-links a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb-links a:hover {
+            color: var(--secondary);
+        }
+
+        .breadcrumb-links span {
+            margin: 0 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+            
+            .search-bar {
+                max-width: 400px;
+                margin: 20px auto;
+                order: 3;
+                width: 100%;
+            }
+            
+            .main-header {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .user-actions {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 5px 5px;
+            }
+            
+            .nav-links a {
+                padding: 15px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .banner h2 {
+                font-size: 2.2rem;
+            }
+            
+            .top-bar .container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            
+            .quick-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+            
+            .product-filters {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .copyright {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .copyright-links a {
+                margin: 0 10px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Top Bar avec Contact -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>
+                    <i class="fas fa-phone"></i>
+                    <strong>Téléphone :</strong> +228 91 07 57 37 <!-- MODIFIER VOTRE NUMÉRO -->
+                </span>
+                <span>
+                    <i class="fas fa-envelope"></i>
+                    <strong>Email :</strong> contact@kaycshop.com <!-- MODIFIER VOTRE EMAIL -->
+                </span>
+            </div>
+            <div class="top-links">
+                <a href="#aide"><i class="fas fa-question-circle"></i> Centre d'aide</a>
+                <a href="#suivi"><i class="fas fa-truck"></i> Suivi de commande</a>
+                <a href="#compte"><i class="fas fa-user"></i> Mon compte</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
     <header>
-        <h1>Welcome to KAYC Shop</h1>
+        <div class="container">
+            <div class="main-header">
+                <a href="#" class="logo">
+                    <i class="fas fa-shopping-bag"></i>
+                    KAYC <span>Shop</span>
+                </a>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Rechercher un produit, une marque...">
+                    <button><i class="fas fa-search"></i> Rechercher</button>
+                </div>
+                
+                <div class="user-actions">
+                    <a href="#favoris" title="Favoris">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                    <a href="#compte" title="Mon compte">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <a href="#panier" class="cart-icon" title="Panier">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Principale -->
+        <nav>
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li class="dropdown">
+                        <a href="#"><i class="fas fa-tshirt"></i> Mode <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#homme">Mode Homme</a>
+                            <a href="#femme">Mode Femme</a>
+                            <a href="#enfant">Mode Enfant</a>
+                        </div>
+                    </li>
+                    <li><a href="#electronique"><i class="fas fa-laptop"></i> Électronique</a></li>
+                    <li><a href="#maison"><i class="fas fa-home"></i> Maison & Jardin</a></li>
+                    <li><a href="#beaute"><i class="fas fa-spa"></i> Beauté & Santé</a></li>
+                    <li><a href="#sports"><i class="fas fa-futbol"></i> Sports & Loisirs</a></li>
+                    <li><a href="#promotions"><i class="fas fa-tag"></i> Promotions</a></li>
+                    <li><a href="#nouveautes"><i class="fas fa-star"></i> Nouveautés</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <p>This is the main content of the shop.</p>
+    <!-- Quick Access Bar -->
+    <div class="quick-access">
+        <div class="container">
+            <div class="quick-links">
+                <a href="#livraison" class="quick-link">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>Livraison Rapide</span>
+                </a>
+                <a href="#paiement" class="quick-link">
+                    <i class="fas fa-lock"></i>
+                    <span>Paiement Sécurisé</span>
+                </a>
+                <a href="#retours" class="quick-link">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Retours Faciles</span>
+                </a>
+                <a href="#support" class="quick-link">
+                    <i class="fas fa-headset"></i>
+                    <span>Support 24/7</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-links">
+                <a href="#"><i class="fas fa-home"></i> Accueil</a>
+                <span>></span>
+                <a href="#">Boutique</a>
+                <span>></span>
+                <span>Tous les produits</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bienvenue chez <span>KAYC Shop</span></h1>
+                    <p>Découvrez notre sélection exclusive de produits de qualité. Livraison rapide, paiement sécurisé et service client exceptionnel.</p>
+                    <a href="#produits" class="btn">
+                        <i class="fas fa-shopping-bag"></i>
+                        Découvrir nos produits
+                    </a>
+                    <a href="#promotions" class="btn btn-secondary">
+                        <i class="fas fa-tag"></i>
+                        Voir les promotions
+                    </a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Shopping en ligne">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégories -->
+    <section class="container">
+        <h2 class="section-title">Parcourir nos <span>catégories</span></h2>
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mode Homme">
+                </div>
+                <div class="category-info">
+                    <h3>Mode Homme</h3>
+                    <p>Vêtements, chaussures et accessoires tendance</p>
+                    <a href="#homme" class="category-link">Voir la collection <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mode Femme">
+                </div>
+                <div class="category-info">
+                    <h3>Mode Femme</h3>
+                    <p>Collections tendance pour toutes les occasions</p>
+                    <a href="#femme" class="category-link">Explorer <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Électronique">
+                </div>
+                <div class="category-info">
+                    <h3>Électronique</h3>
+                    <p>High-tech, smartphones et gadgets innovants</p>
+                    <a href="#electronique" class="category-link">Découvrir <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Maison">
+                </div>
+                <div class="category-info">
+                    <h3>Maison & Jardin</h3>
+                    <p>Décoration, mobilier et équipement</p>
+                    <a href="#maison" class="category-link">Visiter <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Livraison Rapide</h3>
+                    <p>Livraison en 24-48h partout en France</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Paiement Sécurisé</h3>
+                    <p>Transactions 100% sécurisées</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo-alt"></i>
+                    </div>
+                    <h3>Retours Faciles</h3>
+                    <p>Retours acceptés sous 30 jours</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support Client</h3>
+                    <p>Assistance 7j/7 par téléphone et email</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produits -->
+    <section class="products container">
+        <h2 class="section-title">Produits <span>populaires</span></h2>
         
-        <!-- Contact Forms Start -->
-        <form action="https://formspree.io/f/mzdayqvl" method="POST">
-            <label for="contactez">Contactez Marceline:</label>
-            <input type="text" id="contactez" name="contactez">
-            <button type="submit">Send</button>
-        </form>
+        <div class="product-filters">
+            <button class="filter-btn active" data-filter="all">Tous les produits</button>
+            <button class="filter-btn" data-filter="promo">Promotions</button>
+            <button class="filter-btn" data-filter="nouveau">Nouveautés</button>
+            <button class="filter-btn" data-filter="meilleur">Meilleures ventes</button>
+        </div>
         
-        <form action="https://formspree.io/f/meelvwzy" method="POST">
-            <label for="devis">Devis Marceline:</label>
-            <input type="text" id="devis" name="devis">
-            <button type="submit">Get Quote</button>
-        </form>
-        
-        <form action="https://formspree.io/f/xojnyzna" method="POST">
-            <label for="inscription">Inscription Marceline:</label>
-            <input type="text" id="inscription" name="inscription">
-            <button type="submit">Subscribe</button>
-        </form>
-        <!-- Contact Forms End -->
-        
-        <!-- Footer -->
-    </main>
-    
+        <div class="product-grid">
+            <!-- Produit 1 -->
+            <div class="product-card" data-category="promo">
+                <span class="product-badge">-30%</span>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chaussures de Sport">
+                    <div class="product-actions">
+                        <button title="Ajouter aux favoris"><i class="far fa-heart"></i></button>
+                        <button title="Voir rapidement"><i class="fas fa-search"></i></button>
+                        <button title="Comparer"><i class="fas fa-exchange-alt"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Chaussures</div>
+                    <h3 class="product-title">Chaussures de Sport Running Pro</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(4.2)</span>
+                    </div>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">45000f CFA</span>
+                            <span class="old-price">220000F CFA</span>
+                        </div>
+                        <button class="add-to-cart" title="Ajouter au panier">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produit 2 -->
+            <div class="product-card" data-category="nouveau">
+                <span class="product-badge" style="background-color: var(--accent);">Nouveau</span>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casque Audio">
+                    <div class="product-actions">
+                        <button title="Ajouter aux favoris"><i class="far fa-heart"></i></button>
+                        <button title="Voir rapidement"><i class="fas fa-search"></i></button>
+                        <button title="Comparer"><i class="fas fa-exchange-alt"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Électronique</div>
+                    <h3 class="product-title">Casque Audio Sans Fil Premium</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(4.7)</span>
+                    </div>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">98 400 F CFA</span>
+                        </div>
+                        <button class="add-to-cart" title="Ajouter au panier">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produit 3 -->
+            <div class="product-card" data-category="meilleur">
+                <span class="product-badge" style="background-color: var(--success);">Best Seller</span>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="T-shirt">
+                    <div class="product-actions">
+                        <button title="Ajouter aux favoris"><i class="far fa-heart"></i></button>
+                        <button title="Voir rapidement"><i class="fas fa-search"></i></button>
+                        <button title="Comparer"><i class="fas fa-exchange-alt"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Vêtements</div>
+                    <h3 class="product-title">T-shirt Cotton Bio Premium</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(4.0)</span>
+                    </div>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">19 700 F CFAPM°</span>
+                        </div>
+                        <button class="add-to-cart" title="Ajouter au panier">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Produit 4 -->
+            <div class="product-card" data-category="promo">
+                <span class="product-badge">-25%</span>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Montre Connectée">
+                    <div class="product-actions">
+                        <button title="Ajouter aux favoris"><i class="far fa-heart"></i></button>
+                        <button title="Voir rapidement"><i class="fas fa-search"></i></button>
+                        <button title="Comparer"><i class="fas fa-exchange-alt"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Accessoires</div>
+                    <h3 class="product-title">Montre Connectée Sport Étanche</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">124 650 F CFA</span>
+                            <span class="old-price">163 000 F CFA</span>
+                        </div>
+                        <button class="add-to-cart" title="Ajouter au panier">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bannière Promotionnelle -->
+    <section class="container">
+        <div class="banner">
+            <div class="banner-content">
+                <h2>Grande Vente d'Été !</h2>
+                <p>Profitez de réductions exceptionnelles jusqu'à -50% sur toute la boutique. Offre valable jusqu'au 31 août. Livraison OFFERTE dès 50€ d'achat !</p>
+                <a href="#promotions" class="btn" style="background-color: white; color: var(--accent);">
+                    <i class="fas fa-fire"></i>
+                    Voir toutes les promos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 KAYC Shop</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>KAYC Shop</h3>
+                    <p>Votre boutique en ligne de confiance depuis 2023. Nous nous engageons à vous offrir les meilleurs produits avec un service client exceptionnel.</p>
+                    <div class="contact-details">
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Agoé assiyéyé, Lomé, TOGO</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone"></i>
+                            <span>Tél: +228 91 07 57 31</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: contact@kaycshop.com</span>
+                        </p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#pinterest" title="Pinterest"><i class="fab fa-pinterest"></i></a>
+                        <a href="#youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navigation Rapide</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#nouveautes"><i class="fas fa-chevron-right"></i> Nouveautés</a></li>
+                        <li><a href="#promotions"><i class="fas fa-chevron-right"></i> Promotions</a></li>
+                        <li><a href="#meilleures-ventes"><i class="fas fa-chevron-right"></i> Meilleures ventes</a></li>
+                        <li><a href="#marques"><i class="fas fa-chevron-right"></i> Nos marques</a></li>
+                        <li><a href="#blog"><i class="fas fa-chevron-right"></i> Blog & Conseils</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Mon Compte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#compte"><i class="fas fa-chevron-right"></i> Mon compte</a></li>
+                        <li><a href="#commandes"><i class="fas fa-chevron-right"></i> Mes commandes</a></li>
+                        <li><a href="#favoris"><i class="fas fa-chevron-right"></i> Mes favoris</a></li>
+                        <li><a href="#adresses"><i class="fas fa-chevron-right"></i> Mes adresses</a></li>
+                        <li><a href="#informations"><i class="fas fa-chevron-right"></i> Mes informations</a></li>
+                        <li><a href="#deconnexion"><i class="fas fa-chevron-right"></i> Déconnexion</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Inscrivez-vous pour recevoir nos offres exclusives, nouveautés et conseils shopping.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre adresse email" required>
+                        <button type="submit">
+                            <i class="fas fa-paper-plane"></i>
+                            S'abonner
+                        </button>
+                    </form>
+                    <p style="font-size: 0.8rem; margin-top: 15px; color: #999;">
+                        En vous inscrivant, vous acceptez notre politique de confidentialité.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <div>
+                    <p>&copy; 2023 <strong>KAYC Shop</strong>. Tous droits réservés.</p>
+                </div>
+                <div class="copyright-links">
+                    <a href="#mentions-legales">Mentions légales</a>
+                    <a href="#confidentialite">Confidentialité</a>
+                    <a href="#cgv">CGV</a>
+                    <a href="#cookies">Cookies</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuration
+            const config = {
+                boutiqueNom: "KAYC Shop",
+                telephone: "+228 91 07 57 31",
+                email: "contact@kaycshop.com",
+                devise: "€"
+            };
+
+            // Initialisation
+            let panier = JSON.parse(localStorage.getItem('panier_kayc')) || [];
+            updateCartCount();
+
+            // Back to Top Button
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Navigation active
+            const currentPage = window.location.hash || '#accueil';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Filtrage des produits
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Retirer la classe active de tous les boutons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    
+                    productCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Gestion du panier
+            const cartButtons = document.querySelectorAll('.add-to-cart');
+            cartButtons.forEach((button, index) => {
+                button.addEventListener('click', function() {
+                    const productCard = this.closest('.product-card');
+                    const product = {
+                        id: Date.now() + index,
+                        name: productCard.querySelector('.product-title').textContent,
+                        price: parseFloat(productCard.querySelector('.price').textContent.replace('€', '').replace(',', '.')),
+                        image: productCard.querySelector('img').src,
+                        category: productCard.querySelector('.product-category').textContent,
+                        quantity: 1
+                    };
+                    
+                    addToCart(product);
+                    
+                    // Animation
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i>';
+                    this.style.backgroundColor = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalHTML;
+                        this.style.backgroundColor = '';
+                    }, 1000);
+                    
+                    showNotification('Produit ajouté au panier !', 'success');
+                });
+            });
+
+            // Gestion des favoris
+            const wishlistButtons = document.querySelectorAll('.product-actions button:first-child');
+            wishlistButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        this.style.color = 'var(--accent)';
+                        showNotification('Ajouté aux favoris ❤️', 'success');
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        this.style.color = '';
+                        showNotification('Retiré des favoris', 'info');
+                    }
+                });
+            });
+
+            // Recherche
+            const searchInput = document.querySelector('.search-bar input');
+            const searchButton = document.querySelector('.search-bar button');
+            
+            searchButton.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') performSearch();
+            });
+
+            // Newsletter
+            const newsletterForm = document.querySelector('.newsletter-form');
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input').value;
+                if (validateEmail(email)) {
+                    showNotification('Merci pour votre inscription à la newsletter !', 'success');
+                    this.reset();
+                } else {
+                    showNotification('Veuillez entrer un email valide', 'error');
+                }
+            });
+
+            // Catégories
+            const categoryCards = document.querySelectorAll('.category-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryName = this.querySelector('h3').textContent;
+                    showNotification(`Navigation vers : ${categoryName}`, 'info');
+                });
+            });
+
+            // Quick Links
+            const quickLinks = document.querySelectorAll('.quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const text = this.querySelector('span').textContent;
+                    showNotification(`Fonctionnalité : ${text}`, 'info');
+                });
+            });
+
+            // ===== FONCTIONS UTILITAIRES =====
+            function addToCart(product) {
+                const existingProduct = panier.find(item => item.id === product.id);
+                
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    panier.push(product);
+                }
+                
+                localStorage.setItem('panier_kayc', JSON.stringify(panier));
+                updateCartCount();
+            }
+
+            function updateCartCount() {
+                const totalItems = panier.reduce((total, item) => total + item.quantity, 0);
+                document.querySelector('.cart-count').textContent = totalItems;
+            }
+
+            function performSearch() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    showNotification(`Recherche : "${searchTerm}"`, 'info');
+                    searchInput.value = '';
+                }
+            }
+
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.textContent = message;
+                notification.className = 'notification';
+                
+                let bgColor;
+                switch(type) {
+                    case 'success': bgColor = 'var(--success)'; break;
+                    case 'error': bgColor = 'var(--secondary)'; break;
+                    case 'info': bgColor = 'var(--accent)'; break;
+                    default: bgColor = 'var(--accent)';
+                }
+                
+                notification.style.cssText = `
+                    position: fixed;
+                    bottom: 30px;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(100px);
+                    background-color: ${bgColor};
+                    color: white;
+                    padding: 15px 30px;
+                    border-radius: var(--radius);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    animation: slideUp 0.3s ease forwards;
+                    max-width: 400px;
+                    text-align: center;
+                    font-weight: 500;
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideDown 0.3s ease forwards';
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 3000);
+            }
+
+            // Ajout des styles d'animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideUp {
+                    from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+                    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+                }
+                
+                @keyframes slideDown {
+                    from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                    to { transform: translateX(-50%) translateY(100px); opacity: 0; }
+                }
+                
+                .product-card {
+                    transition: opacity 0.3s ease, transform 0.3s ease;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Message de bienvenue
+            if (!sessionStorage.getItem('welcomeShown')) {
+                setTimeout(() => {
+                    showNotification(`Bienvenue sur ${config.boutiqueNom} ! Profitez de 10% de réduction avec le code : KAYC10`, 'success');
+                    sessionStorage.setItem('welcomeShown', 'true');
+                }, 1500);
+            }
+
+            // Mettre à jour les informations de contact dynamiquement
+            document.querySelectorAll('.contact-info span').forEach(span => {
+                if (span.innerHTML.includes('Téléphone')) {
+                    span.innerHTML = span.innerHTML.replace('+33 7 12 34 56 78', config.telephone);
+                }
+                if (span.innerHTML.includes('Email')) {
+                    span.innerHTML = span.innerHTML.replace('contact@kaycshop.com', config.email);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
