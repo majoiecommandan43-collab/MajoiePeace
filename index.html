@@ -1351,15 +1351,18 @@
                 <!-- CONTACTEZ -->
                 <div class="form-card">
                     <h3><i class="fas fa-paper-plane"></i> Contactez Marceline</h3>
-                    <form class="fs-form" action="https://formspree.io/f/maqdagoo" method="POST" data-success="Message envoyé. Merci !">
-                        <input type="text" name="name" placeholder="Nom complet" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="tel" name="phone" placeholder="Téléphone">
-                        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-                        <input type="text" name="_gotcha" style="display:none">
-                        <button type="submit"><i class="fas fa-envelope"></i> Envoyer le message</button>
-                        <p class="fs-status" aria-live="polite"></p>
-                    </form>
+                    <form action="https://formspree.io/f/maqdagoo"method="POST">
+  <label>
+    Your email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+  <!-- your other form fields go here -->
+  <button type="submit">Send</button>
+</form>
                 </div>
                 <!-- DEVIS -->
                 <div class="form-card">
