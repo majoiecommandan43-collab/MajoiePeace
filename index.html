@@ -1344,59 +1344,48 @@
     </section>
 
     <!-- ========== SECTION FORMULAIRES MARCELLINE (intégrée joliment) ========== -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez <span>Marceline</span></h2>
-            <div class="forms-grid">
-                <!-- CONTACTEZ -->
-                <div class="form-card">
-                    <h3><i class="fas fa-paper-plane"></i> Contactez Marceline</h3>
-                    <form action="https://formspree.io/f/maqdagoo"method="POST">
-  <label>
-    Your email:
-    <input type="email" name="email">
-  </label>
-  <label>
-    Your message:
-    <textarea name="message"></textarea>
-  </label>
-  <!-- your other form fields go here -->
-  <button type="submit">Send</button>
-</form>
-                </div>
-                <!-- DEVIS -->
-                <div class="form-card">
-                    <h3><i class="fas fa-file-invoice"></i> Demande de devis</h3>
-                    <form class="fs-form" action="https://formspree.io/f/xqedwvqb" method="POST" data-success="Demande de devis envoyée. Merci !">
-                        <input type="text" name="name" placeholder="Nom complet" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="tel" name="phone" placeholder="Téléphone">
-                        <input type="text" name="service" placeholder="Service demandé" required>
-                        <input type="text" name="budget" placeholder="Budget (optionnel)">
-                        <textarea name="details" rows="5" placeholder="Détails du besoin" required></textarea>
-                        <input type="text" name="_gotcha" style="display:none">
-                        <button type="submit"><i class="fas fa-calculator"></i> Envoyer la demande</button>
-                        <p class="fs-status" aria-live="polite"></p>
-                    </form>
-                </div>
-                <!-- INSCRIPTION -->
-                <div class="form-card">
-                    <h3><i class="fas fa-user-plus"></i> Inscription</h3>
-                    <form class="fs-form" action="https://formspree.io/f/xlgwaybl" method="POST" data-success="Inscription envoyée. Merci !">
-                        <input type="text" name="full_name" placeholder="Nom complet" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="tel" name="phone" placeholder="Téléphone">
-                        <input type="text" name="formation" placeholder="Formation souhaitée" required>
-                        <textarea name="message" rows="4" placeholder="Message (optionnel)"></textarea>
-                        <input type="text" name="_gotcha" style="display:none">
-                        <button type="submit"><i class="fas fa-check-circle"></i> S'inscrire</button>
-                        <p class="fs-status" aria-live="polite"></p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="contact">
+  <h2>Contact</h2>
 
+  <!-- CONTACTEZ -->
+  <h3>Contactez Marceline</h3>
+  <form class="fs-form" action="https://formspree.io/f/maqdagoo" method="POST" data-success="Message envoyé. Merci !">
+    <input type="text" name="name" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Téléphone">
+    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+    <input type="text" name="_gotcha" style="display:none">
+    <button type="submit">Envoyer</button>
+    <p class="fs-status" aria-live="polite"></p>
+  </form>
+
+  <!-- DEVIS -->
+  <h3>Devis Marceline</h3>
+  <form class="fs-form" action="https://formspree.io/f/xqedwvqb" method="POST" data-success="Demande de devis envoyée. Merci !">
+    <input type="text" name="name" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Téléphone">
+    <input type="text" name="service" placeholder="Service demandé" required>
+    <input type="text" name="budget" placeholder="Budget (optionnel)">
+    <textarea name="details" rows="5" placeholder="Détails du besoin" required></textarea>
+    <input type="text" name="_gotcha" style="display:none">
+    <button type="submit">Envoyer</button>
+    <p class="fs-status" aria-live="polite"></p>
+  </form>
+
+  <!-- INSCRIPTION -->
+  <h3>Inscription Marceline</h3>
+  <form class="fs-form" action="https://formspree.io/f/xlgwaybl" method="POST" data-success="Inscription envoyée. Merci !">
+    <input type="text" name="full_name" placeholder="Nom complet" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="tel" name="phone" placeholder="Téléphone">
+    <input type="text" name="formation" placeholder="Formation" required>
+    <textarea name="message" rows="4" placeholder="Message (optionnel)"></textarea>
+    <input type="text" name="_gotcha" style="display:none">
+    <button type="submit">Envoyer</button>
+    <p class="fs-status" aria-live="polite"></p>
+  </form>
+</section>
     <!-- Footer -->
     <footer>
         <div class="container">
